@@ -1,0 +1,35 @@
+/*FAQ Page*/
+
+.accordion {
+    width: 100%;
+    background-color: #eee;
+    margin: 0;
+    padding: 1rem;
+    border: none;
+    border-bottom: 1px solid var(--mainRed);
+    justify-content: space-between;
+    font-size: 1.2rem;
+    text-align: left;
+    background-color: white;
+    cursor: pointer;
+}
+.accordion span {
+    max-width: 80%;
+} 
+.accordion svg {
+    width: 40px;
+}
+.accordion:hover{
+    background-color: lightgray
+}
+.accordionBody {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+.accordionBody p {
+    padding: 10px 10px 0 30px;
+}
+#accordionMinus {
+    display: none;
+}

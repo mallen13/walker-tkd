@@ -1,0 +1,18 @@
+/*Gallery*/
+.imageGallery {
+    column-count: 1;
+    column-gap: 5px;
+}
+.imageGallery img {
+    border-radius: 3px;
+    transition-duration: 1s;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+@media  screen and (min-width: 768px) {
+    .imageGallery {
+        column-count: 3;
+        column-gap: 5px;
+    }
+}
