@@ -1,0 +1,50 @@
+/*Tournament Page*/
+.tournamentShirtPic {
+    max-width: 20rem;
+}
+
+/*Tournament Form*/
+.tournamentForm {
+    width: 100%;
+    margin-top: 3rem;
+}
+
+/*Tournament Link Form*/
+.tournamentLinkForm {
+    position: sticky;
+    bottom: 0;
+    box-sizing: border-box;
+    background-color: rgb(250, 250, 93);
+    width: 100vw;
+    transition: 1s;
+    transition-delay: 0.5s;
+    overflow: hidden;
+    max-height: 0px;
+}
+
+.tournamentLinkForm button {
+    background-color: transparent;
+    align-self: flex-end;
+    border: none;
+    cursor: pointer;
+}
+.tournamentLinkForm a {
+    color: black;
+    margin-top: 1rem; 
+    text-decoration: none;
+    text-decoration: underline;
+}
+.popupformContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media  screen and (min-width: 768px) {
+    .popupformContainer {
+        flex-direction: row;
+    }
+    .tournamentLinkForm a {
+        margin: 0 0 0 1rem;
+    }
+}

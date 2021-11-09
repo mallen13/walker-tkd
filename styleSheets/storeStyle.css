@@ -1,0 +1,258 @@
+/* store */
+.store {
+    background-color: rgb(233, 233, 233);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.store h2 {
+    text-align: center;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+.store h2 svg {
+    margin-right: 1rem;
+}
+
+/* store iems */
+#storeItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.storeItemForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    box-shadow: 5px 5px 15px gray;
+    border: 2px solid var(--mainBlue);
+    border-radius: 10px;
+    padding: 0rem 1rem 1rem 1rem;
+    background-color: white;
+    text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+    .storeItemForm {
+        max-width: 260px;
+    }
+}
+
+.itemTitle {
+    font-size: 1.5rem;
+    text-align: center;
+    align-items: center;
+}
+
+.storeItemForm label {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.storeNavBtn {
+    outline: none;
+    width: 12rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: var(--mainBlue);
+    padding: 0.5rem;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+#storeBtn svg, .storeNavBtn svg{
+    margin-right: 0.5rem;
+}
+
+.storeNavBtn:hover, .storeNavBtn:focus, .storeNavBtn:active {
+    background-color: #426ea3;
+    color: white;
+}
+
+#showCartBtn {
+    margin-bottom: 1.5rem;
+}
+
+@media  screen and (min-width: 768px) {
+    .storeItemForm {
+        margin: 1rem;
+        width: 40%;
+    }
+}
+
+.storeAddBtn {
+    outline: none;
+    margin-top: 2rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: var(--mainBlue);
+    padding: 0.5rem;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.storeAddBtn:hover, .storeAddBtn:focus, .storeAddBtn:active {
+    box-shadow: none;
+    background-color: #426ea3;
+    color: white;
+}
+
+/* shopping cart */
+#storeCart {
+    box-shadow: 5px 5px 15px gray;
+    border: 2px solid var(--mainBlue);
+    border-radius: 10px;
+    background-color: white;
+    padding: 0.5rem; 
+}
+#cartDetails {
+    background-color: white;
+}
+.cartRow {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--mainBlue);
+    padding: 0.5rem 1rem 0 1rem;
+}
+.removeItemBtn {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    height: 1.6rem;
+}
+.removeItemBtn svg {
+    margin-right: 0.5rem;
+}
+.removeItemBtn:hover,.removeItemBtn:active,.removeItemBtn:focus{
+    outline: none;
+    color: rgb(214, 3, 3);
+}
+.cartRow li {
+    margin: 0;
+    text-align: left;
+    font-size: 1rem;
+    list-style-type: circle;
+}
+.cartInputValue {
+    font-size: 10px;
+    padding-left: 3rem;
+}
+.cartTotal {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    background-color: white;
+    padding: 1rem;
+}
+.cartItemHeaderDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* checkout */
+#storeCheckout {
+    box-shadow: 5px 5px 15px gray;
+    border: 2px solid var(--mainBlue);
+    border-radius: 10px;
+    padding: 0rem 1rem 1rem 1rem;
+    background-color: white;
+    text-align: center;
+}
+#storeCheckout {
+    margin-bottom: 1rem;
+}
+#storeCheckout label {
+    max-width: 300px;
+}
+#storePayBtn {
+    display: none;
+}
+#storePayBtn svg {
+    margin-right: 0.5rem;
+}
+#storeCheckout p {
+    font-size: 0.9rem;
+    text-align: left;
+    font-style: italic;
+    max-width: 700px;
+    margin-bottom: 1rem;
+}
+#storeCheckout label {
+    margin: 0.75rem;
+}
+.sq-card-component{
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 100%;
+}
+.sq-card-iframe-container {
+    position: static !important;
+}
+.sq-card-wrapper.sq-error .sq-card-iframe-container::before, .sq-card-wrapper.sq-focus .sq-card-iframe-container::before    {
+    border: none !important;
+}
+.sq-card-component:hover, .sq-card-component:focus, .sq-card-component:active{
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 0px blue;
+}
+.checkoutBtnContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* payment processing overlay */
+#payStatusOverlay { 
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#payOverlayContainer{
+    background-color: white;
+    padding: 2rem;
+    border: 2px solid var(--mainBlue);
+    border-radius: 10px;
+}
+
+#payStatusOverlay p{  
+    font-style:normal;
+}
+
+#payStatusOverlay svg{  
+    margin: 1rem;
+}
+
+#payStatusOverlay svg{  
+    margin: 1rem;
+}
+
+#overlayExitBtn {  
+    margin: 1rem;
+}
+
+#paymentProcessingMsg svg{
+    animation: spinCartArrow 1s linear 0s infinite;
+}
+
+@keyframes spinCartArrow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

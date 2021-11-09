@@ -1,0 +1,20 @@
+/*Blog Page*/
+.blogTitle {
+    font-size: 2rem;
+}
+.blogTitleInfo {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: black;
+    margin: 0;
+}
+.blogTitleInfoLine{
+    border-right: 2px solid black;
+    height: 20px;
+    margin: 0 1.1rem 0 0.9rem;
+}
+.blogTitleImg {
+    display: block;
+    width: 100%;
+    margin-bottom: 2rem;
+}

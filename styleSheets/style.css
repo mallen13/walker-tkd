@@ -1,0 +1,547 @@
+/*Vars*/
+:root {
+    --mainBlue: #024ca8;
+    --mainRed: #d03349;
+}
+
+/*General Styles*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 1.1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    cursor: pointer
+}
+
+h2 {
+    color: #023472;
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+}
+h3 {
+    color: #023472;
+    margin: 1rem;
+}
+
+p {
+    line-height: 1.5;
+}
+
+.bodyContent a {
+    color: black
+}
+.bodyContent a:active, .bodyContent a:visited {
+    color: black;
+}
+
+li {
+    list-style-position: inside;
+    margin-bottom: 0.3rem;
+    margin-left: 2rem;
+}
+
+strong {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    width: 100%;
+}
+
+input,select{
+    box-sizing: border-box;
+    outline: none;
+    margin-top: 0.25rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+input:focus, input:hover, input:active, select:focus, select:hover, select:active {
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 0px blue;
+}
+
+/*Utilities*/
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexRow {
+    flex-direction: row;
+}
+
+.flexColumn {
+    flex-direction: column;
+}
+
+.menuBtn {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
+    font-size: 1.4rem;
+    padding: 0.1rem;
+}
+.menuBtn:hover, .menuBtn:active {
+    text-decoration: underline;
+}
+
+.tc {
+    text-align: center;
+}
+
+.bodyContent{
+    width: 90%;
+    max-width: 900px;
+    margin: 0 1.2rem 1.2rem 1.2rem;
+    background-color: white;
+}
+
+.bodyContent p{
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.pageTitle {
+    font-size: 3rem;
+    font-weight: 40;
+    font-family: 'Zen Loop', cursive;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.displayNone {
+    display: none;
+}
+
+.pageTitle img {
+    width: 12rem;
+    margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+    .pageTitle {
+        font-size: 4rem;
+    }
+    .pageTitle img {
+        width: 15rem;
+    }
+}
+
+/*Other*/
+.wrapper {
+    min-height: calc(100vh - 20rem);
+}
+
+/*Header*/
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  max-width: 100vw; 
+  height: 2rem;
+  background-color: var(--mainRed); 
+  color: #ffffff;   
+  padding: 1rem;
+  box-shadow: 0px 0px 8px 2px blue;
+  margin-bottom: 3rem;
+}
+
+header button {
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+header button svg {
+    margin-right: 0.5rem;
+}
+
+header button:focus {
+    text-decoration: underline;
+    border: 1px solid white;
+}
+
+.fbLink, .emailLink, .vertLine1, .vertLine2 {
+    display: none;
+}
+
+.Link {
+    display:block;
+}
+
+.placeholderDiv {
+    display: none;
+}
+
+header a{
+    color: #ffffff;
+    text-decoration: none;
+    margin: 1rem;
+}
+
+header a:hover, header a:active {
+    text-decoration: underline;
+}
+
+header a svg {
+    margin-right: .5rem;
+}
+
+.vertLine1, .vertLine2 {
+    border-left: 2px solid #ffffff;
+    height: 25px;
+}
+
+
+@media only screen and (max-width: 319px) {
+    .navLink {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 667px) {
+    .fbLink {
+        display: flex;
+    }
+    .vertLine1 {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .header {
+        margin-bottom: 40px;
+    }
+    .navLink {
+        display: flex;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .emailLink {
+        display: flex;
+    }
+    .vertLine2 {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .placeholderDiv{
+        display: block;
+        color: transparent;
+    }
+}
+
+/*Nav*/
+#navContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    max-width: 0px;
+    /*animations*/
+    overflow: hidden;
+    max-width: 0px;
+}
+
+nav hr {
+    width: 95%;
+}
+#navBackgroundOverlay {
+    flex-grow: 100;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+#navbar {
+   width: 250px;
+   max-height: 100%;
+   overflow-y: auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: var(--mainBlue);
+   padding: 15px 20px 40px 20px;
+   /*animations*/
+   overflow: hidden;
+   max-width: 0px;
+   transition: max-width 0.2s ease-out;
+}
+
+.navLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   
+}
+
+nav a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 10px;
+}
+
+nav a:hover, nav a:active, nav a:focus {
+    text-decoration: underline;
+}
+
+nav a svg {
+    margin-right: .5rem;
+}
+
+.navHeaderContainer{
+    width: 100%;
+    justify-content: space-between;
+}
+
+#exitNavBtn {
+    align-self: flex-start;
+}
+
+.navLogo {
+    width: 9rem; 
+    margin-bottom: 0.25rem;
+}
+
+.menuLink {
+    font-size: 1.6rem;
+    margin: 1rem;
+}
+
+.navMenuBtn {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+.navMenuBtnArrow{
+    margin-left: 1rem;
+}
+
+@keyframes subMenuArrowDown{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes subMenuArrowUp{
+    from {
+        transform: rotate(90deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.navSubMenu {
+    max-height: 0;
+    overflow: hidden;
+}
+
+@keyframes openSubMenu{
+    from {
+        max-height: 0px;
+        overflow: hidden;
+    }
+    to {
+        max-height: 200px;
+        overflow: visible;
+    }
+}
+
+@keyframes closeSubMenu{
+    from {
+        max-height: 200px;
+        overflow: visible;
+    }
+    to {
+        max-height: 0px;
+        overflow: hidden;
+    }
+}
+
+@keyframes openSubMenu{
+    from {
+        max-height: 0px;
+        overflow: hidden;
+    }
+    to {
+        max-height: 200px;
+        overflow: visible;
+    }
+}
+
+nav p {
+    color: white;
+}
+
+.classSchedTitle {
+   font-weight: bold;
+   margin-top: 2rem;
+}
+
+/*Footer*/
+footer {
+    background-color: var(--mainBlue);
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    padding: 0 1rem 2rem 1rem;
+    margin-top: 3rem;
+}
+.footerSVGLink {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.footerSVGLink svg{
+    margin-right: 0.50rem;
+}
+.displayNone {
+    display: none;
+}
+.footerTopLink {
+   margin: 1rem;
+}
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    display: block;
+    word-break: break-word;
+}
+footer a:hover, footer a:active {
+    text-decoration: underline;
+}
+.footerContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    max-width: 900px;
+    margin-bottom: 1rem;
+}
+.footerContainer section {
+    margin: 1rem;
+}
+.authorLink {
+    display: inline-block;
+}
+.footerTitle {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+footer hr {
+    width: 90%;
+    max-width: 1100px;
+    border: 1px solid #ffffff;
+    margin: 30px;
+}
+.copyrightContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 700px;
+}
+.copyrightContainer p {
+    margin: 1rem;
+}
+
+.copyrightContainer a {
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 768px) {
+    .footerTopLink {
+        margin-top: 2rem;
+     }
+    footer section {
+        margin: 1rem 4rem 3rem 4rem;
+    }
+    .footerTitle {
+        margin-bottom: 1rem;
+    }
+    .footerContainer {
+        align-items: start;
+        justify-content: space-between;
+    }
+    footer hr {
+        margin: 0px;
+        margin-bottom: 30px;
+        max-width: 1200px;
+    }
+    .copyrightContainer {
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+    }
+    .copyrightContainer {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+/*Home Page*/
+
+/*About Page*/ 
+.instructorContainer {
+   margin-top: 4rem;
+}
+
+.instructorImg {
+    width: 175px;
+    margin-right: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.instructorImgText{
+    width: 175px;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .instructorContainer {
+        display: flex;
+        flex-direction: row;
+        margin-top: 3rem;
+     }
+}
+
+
+
