@@ -34,6 +34,6 @@ As the project grew larger, scalability was considered and modules were used to 
 The project forced me to consider good architecture and modulization as the codebase grew bigger. Additionally, I extensively had to research the Square API as documentation was rather difficult to understand and real-world examles were limited. Other new packages/libraries had to be learned such as node-fetch (to allow fetch), node-mailer (for email), rate-limit (to slow-down malicous intent), and uuid (to generate a uuid for posting to Square). 
 
 ## Roadmap
-Future additions to the project are planned down the road. The client would like to consider a full blog-management application, and an online check-in form. As time allows, the store page could be expanded to accept other forms of payment and include Square o-auth. 
+Future additions to the project are being considered for down the road. Such options include a blog CMS, and an online check-in form. Further, as time allows, the store page could be expanded to accept other forms of payment and include Square o-auth. 
 
 
