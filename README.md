@@ -15,7 +15,7 @@ Front-end technologies used were HTML, CSS, and modular Vanilla JS. All files we
 
 Design of the front-end is all original and effectively uses the organization's branding and colors. A focus on accesible colors, fonts, animations, and layout can be observed on the project. All buttons and links are accessible via keyboard without a mouse.
 
-The back-end API was built using Node-JS. It is partially secured through Node rate-limiter and environment variables, makes use of post requests, and sends emails via Node-Mailer. The server posts payment information to Square API. 
+The back-end API was built using Node-JS and Express. It is partially secured through Node rate-limiter and environment variables, makes use of post requests, and sends emails via Node-Mailer. The server posts payment information to Square API. 
 
 ## Development
 Development started with a strong desire to meet the clients needs and make an amazing project the looked good and functioned well. Client expectations were discussed along with the gathering of image assets and page content. 
