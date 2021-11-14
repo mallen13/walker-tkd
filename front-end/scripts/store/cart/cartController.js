@@ -94,9 +94,9 @@ export const addToCartDOM = item => {
 }
 
 //update Dom Cart / button totals
-export const updateDOMCartTotal = total => {
-    document.getElementById('cartBtnText').innerHTML = `View Cart: $${total}`;
-    document.getElementsByClassName('cartTotal')[0].innerHTML = `Total: $${total}`;
+export const updateDOMCartTotal = (subtotal,total) => {
+    document.getElementById('cartBtnText').innerHTML = `View Cart: $${subtotal}`;
+    document.getElementsByClassName('cartTotal')[0].innerHTML = `Subtotal: $${subtotal}`;
     total > 0 ? document.getElementById('storePayBtn').style.display='flex' : document.getElementById('storePayBtn').style.display='none';
     document.getElementById('payBtnText').innerHTML = `Pay: $${total}`;
 }
