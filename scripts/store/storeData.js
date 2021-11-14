@@ -16,7 +16,6 @@ export let PurchaseDetails = {
       let itemsInStorage = JSON.parse(localStorage.getItem('cartItems'));
       itemsInStorage.forEach( (item,i)=> {
         if (item.name === itemName) {
-          console.log(itemName)
             itemsInStorage.splice(i,1);
             localStorage.setItem('cartItems', JSON.stringify(itemsInStorage))
         }
@@ -30,11 +29,20 @@ export let PurchaseDetails = {
         return []
       }
     },
-    getTotal: function(){
+    getSubtotal: function(){
       let total = 0;
       let items = this.getItems();
       items.forEach( item => total += item.price)
       return total;
+    },
+    getTotal: function(){
+      let total = 0;
+      let items = this.getItems();
+      items.forEach( item => total += item.price);
+
+      let fee = 0;
+      if (total > 0) fee = Math.round(100 * total * .029) / 100 + .3;
+      return total + fee;
     }
   }
 

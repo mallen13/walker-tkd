@@ -21,7 +21,7 @@ const setupCart = PurchaseDetails => {
         
             //render cart,get totals, and add event listeners on initial load
             PurchaseDetails.getItems().forEach( item => addToCartDOM(item) );
-            updateDOMCartTotal(PurchaseDetails.getTotal());
+            updateDOMCartTotal(PurchaseDetails.getSubtotal(),PurchaseDetails.getTotal());
 
             addCartItemEventListeners();
 
@@ -33,7 +33,7 @@ const setupCart = PurchaseDetails => {
                 PurchaseDetails.addItem(item);
                 addToCartDOM(item);
                 addCartItemEventListeners();
-                updateDOMCartTotal(PurchaseDetails.getTotal());
+                updateDOMCartTotal(PurchaseDetails.getSubtotal(),PurchaseDetails.getTotal());
                 //once complete
                 form.reset();
                 alert('Item Added');
@@ -44,7 +44,7 @@ const setupCart = PurchaseDetails => {
             const removeFromCart = (row,itemName) => {
                 if (confirm('Remove Item?')) {
                     PurchaseDetails.removeItem(itemName);
-                    updateDOMCartTotal(PurchaseDetails.getTotal());
+                    updateDOMCartTotal(PurchaseDetails.getSubtotal(),PurchaseDetails.getTotal());
                     row.remove();
                 }  
             }    
