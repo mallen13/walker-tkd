@@ -13,7 +13,7 @@ https://walkertkdacademy.com/store.html
 
 Front-end technologies used were HTML, CSS, and modular Vanilla JS. All files were minified for better load times.
 
-Design of the front-end is all original and effectively uses the organization's branding and colors. A focus on accesible colors, fonts, animations, and layout can be observed on the project. All buttons and links are accessible via keyboard without a mouse.
+Design of the front-end is all original and effectively uses the organization's branding and colors. A focus on accesible colors, fonts, animations, and layout can be observed on the project. All buttons and links are accessible via keyboard without a mouse. Information is saved in local storage to persist betwen refreshes. 
 
 The back-end API was built using Node-JS and Express. It is partially secured through Node rate-limiter and environment variables, makes use of post requests, and sends emails via Node-Mailer. The server posts payment information to Square API. 
 
