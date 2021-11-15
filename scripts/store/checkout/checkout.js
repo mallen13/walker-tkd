@@ -7,9 +7,11 @@ const handleCheckout = (card,PurchaseDetails) => {
 
     //hanlde checkout submit
     checkoutForm.addEventListener('submit', async e => {
+
         e.preventDefault();
         
         if (PurchaseDetails.getTotal() > 0 ) {
+            
             //show processing screen
             displayPayProcessingScreen('pending');
 

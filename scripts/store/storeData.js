@@ -41,7 +41,8 @@ export let PurchaseDetails = {
       items.forEach( item => total += item.price);
 
       let fee = 0;
-      if (total > 0) fee = Math.round(100 * total * .029) / 100 + .3;
+      //calc fee of 2.9% + 30 cents
+      //if (total > 0) fee = Math.round(100 * total * .029) / 100 + .3;
       return total + fee;
     }
   }
