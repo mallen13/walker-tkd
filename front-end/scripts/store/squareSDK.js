@@ -3,8 +3,8 @@ const initializeSquare = async () => {
     //fetch Square appID and locationID from server
     const fetchSquareCredentials = async () => {
         try {
-            //const response = await fetch('https://walkertkdacademy.com/square-credentials');
-            const response = await fetch('http://localhost:8675/square-credentials');
+            const response = await fetch('https://walkertkdacademy.com/square-credentials');
+            //const response = await fetch('http://localhost:8675/square-credentials');
             const data = await response.json();
             return data;
         } catch(err) {
