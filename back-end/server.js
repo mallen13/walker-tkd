@@ -4,7 +4,7 @@ const { createPayment,giveCredentials } = require('./scripts/routeHandler.js');
 const cors = require('cors');
 const rateLimit = require("express-rate-limit");
 const app = express();
-require('dotenv').config();
+// require('dotenv').config();
 const port = 8675;
 
 //setup rate limiter
@@ -17,6 +17,9 @@ const limiter = rateLimit({
 app.use(express.json());
 app.use(cors());
 app.use(limiter);
+
+//request credentials
+app.get('/api', (req,res) => res.send('API is working. :)'));
 
 //request credentials
 app.get('/square-credentials', (req,res) => giveCredentials(req,res));

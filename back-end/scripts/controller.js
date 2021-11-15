@@ -64,7 +64,7 @@ exports.postPayment = async paymentInfoObj => {
           currency: "USD"
         },
         accept_partial_authorization: false,
-        note: `${paymentInfoObj.billingInfo.firstName} + ${paymentInfoObj.billingInfo.lastName}'s order.'`,
+        note: `${paymentInfoObj.billingInfo.firstName} + ${paymentInfoObj.billingInfo.lastName}'s order.`
       })
     }
 
@@ -77,8 +77,8 @@ exports.postPayment = async paymentInfoObj => {
         paymentInfoObj.paymentToken === ''
       ) throw ('Insufficient Data')
 
-      const response = await fetch('https://connect.squareup.com/v2/payments', settings);
-      //const response = await fetch('https://connect.squareupsandbox.com/v2/payments', settings);
+      //const response = await fetch('https://connect.squareup.com/v2/payments', settings);
+      const response = await fetch('https://connect.squareupsandbox.com/v2/payments', settings);
       const data = await response.json();
 
         let transactionObj;
@@ -135,7 +135,7 @@ exports.sendEmailReceipt = async purchaseInfoObj => {
         //send email to merchant
         await transporter.sendMail({
           from: '"Walker Taekwondo Academy" <purchases@walkertkdacademy.com>', 
-          to: `walkertkdacademy@gmail.com`,
+          to: `bromattallen@gmail.com`,
           subject: "New Order Placed", 
           html: createMerchantEmail(purchaseInfoObj)
         });
