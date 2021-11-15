@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const { v4: uuidv4 } = require('uuid');
 const { createCustomerEmail, createMerchantEmail} = require('./emails.js')
 
+//convert date from square to 'Month, Day, Year' format
 exports.setDate = () => {
 
   const getMonthName = month => {
@@ -42,8 +43,13 @@ exports.setDate = () => {
   return `${month} ${day}, ${year}`
 }
 
+
+// Post to Square
 exports.postPayment = async paymentInfoObj => {
 
+  console.log(process.env.SQUARE_ACCESS_TOKEN)
+
+    //post headers/body
     const settings = {
       method: 'POST',
       headers: {
@@ -52,14 +58,13 @@ exports.postPayment = async paymentInfoObj => {
       },
       body: JSON.stringify({
         source_id: paymentInfoObj.paymentToken,
-        // source_id: 'cnon:card-nonce-ok',
         idempotency_key: uuidv4(),
         amount_money: {
           amount: paymentInfoObj.total * 100,
           currency: "USD"
         },
         accept_partial_authorization: false,
-        note: `${paymentInfoObj.billingInfo.firstName} + ${paymentInfoObj.billingInfo.firstName}'s order.'`,
+        note: `${paymentInfoObj.billingInfo.firstName} + ${paymentInfoObj.billingInfo.lastName}'s order.'`,
       })
     }
 
@@ -73,7 +78,7 @@ exports.postPayment = async paymentInfoObj => {
       ) throw ('Insufficient Data')
 
       const response = await fetch('https://connect.squareup.com/v2/payments', settings);
-      // const response = await fetch('https://connect.squareupsandbox.com/v2/payments', settings);
+      //const response = await fetch('https://connect.squareupsandbox.com/v2/payments', settings);
       const data = await response.json();
 
         let transactionObj;
@@ -95,7 +100,7 @@ exports.postPayment = async paymentInfoObj => {
             }
         //if payment info not returned
         } else {
-            console.log('Error- ' + data.errors[0].code + ': ' + data.errors[0].detail)
+            console.log('Error: ' + data.errors[0].code + ': ' + data.errors[0].detail)
             throw data.errors[0].code + ': ' + data.errors[0].detail
         }
         return transactionObj;
@@ -105,6 +110,8 @@ exports.postPayment = async paymentInfoObj => {
     }
 }
 
+
+//Nodemailer
 exports.sendEmailReceipt = async purchaseInfoObj => {
     try {
         let transporter = nodemailer.createTransport({
@@ -133,7 +140,7 @@ exports.sendEmailReceipt = async purchaseInfoObj => {
           html: createMerchantEmail(purchaseInfoObj)
         });
 
-        console.log('Email Sent.')
+        console.log('Emails Sent')
     
     } catch (err) {
         console.log(err)

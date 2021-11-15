@@ -29,8 +29,9 @@ export const postData = async (PurchaseDetails) => {
     const status = async () => {
         try {
             const response = await fetch('https://walkertkdacademy.com/create-payment', settings);
-            // const response = await fetch('http://localhost:8675/create-payment', settings);
+            //const response = await fetch('http://localhost:8675/create-payment', settings);
             const data = await response.json();
+            console.log(data)
             if (response.status === 200) {
                 console.log(data.status)
                 return data;

@@ -10,7 +10,7 @@ const port = 8675;
 //setup rate limiter
 const limiter = rateLimit({
     windowMs: 60 * 60 * 1000, // 60 minutes (first #)
-    max: 20 // limit each IP to 10 requests per windowMs
+    max: 2000 // limit each IP to 10 requests per windowMs
   });
 
 //middleware
