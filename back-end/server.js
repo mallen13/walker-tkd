@@ -19,7 +19,7 @@ app.use(cors());
 app.use(limiter);
 
 //request credentials
-app.get('/api', (req,res) => res.send('API is working. :)'));
+app.get('/api/status', (req,res) => res.send('API is working. :)'));
 
 //request credentials
 app.get('/square-credentials', (req,res) => giveCredentials(req,res));
