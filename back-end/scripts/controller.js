@@ -64,7 +64,7 @@ exports.postPayment = async paymentInfoObj => {
           currency: "USD"
         },
         accept_partial_authorization: false,
-        note: `${paymentInfoObj.billingInfo.firstName} + ${paymentInfoObj.billingInfo.lastName}'s order.`
+        note: `${paymentInfoObj.billingInfo.firstName} ${paymentInfoObj.billingInfo.lastName}'s order.`
       })
     }
 
