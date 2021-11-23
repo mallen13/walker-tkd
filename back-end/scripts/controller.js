@@ -135,12 +135,12 @@ exports.sendEmailReceipt = async purchaseInfoObj => {
         //send email to merchant
         await transporter.sendMail({
           from: '"Walker Taekwondo Academy" <purchases@walkertkdacademy.com>', 
-          to: `bromattallen@gmail.com`,
+          to: `walkertkdacademy@gmail.com`,
           subject: "New Order Placed", 
           html: createMerchantEmail(purchaseInfoObj)
         });
 
-        console.log('Emails Sent')
+        console.log('Emails Sent');
     
     } catch (err) {
         console.log(err)
