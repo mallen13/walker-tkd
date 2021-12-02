@@ -52,13 +52,18 @@ export const ItemsList = [
       name: 'Monthly School Membership',
       description: 'Monthly family school membership. Does not include USCDKA membership.',
       price: 20.00,
-      selectInputs: [],
       textInputs: ['Family Name'],
+      selectInputs: [
+        {
+            label: 'Month',
+            options: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November','December']
+        },
+      ],
       numberInputs: []
     },
     {
       name: 'Annual School Membership',
-      description: 'Annual family school membership. Does not include USCDKA membership.',
+      description: '12 Month Annual family school membership. Does not include USCDKA membership.',
       price: 30.00,
       selectInputs: [],
       textInputs: ['Family Name'],
