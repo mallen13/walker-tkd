@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const nodemailer = require("nodemailer");
 const { v4: uuidv4 } = require('uuid');
-const { createCustomerEmail, createMerchantEmail} = require('./emails.js')
+const { createCustomerEmail, createMerchantEmail, createErrorEmail} = require('./emails.js')
 
 //convert date from square to 'Month, Day, Year' format
 exports.setDate = () => {
@@ -47,8 +47,6 @@ exports.setDate = () => {
 // Post to Square
 exports.postPayment = async paymentInfoObj => {
 
-  console.log(process.env.SQUARE_ACCESS_TOKEN)
-
     //post headers/body
     const settings = {
       method: 'POST',
@@ -77,13 +75,11 @@ exports.postPayment = async paymentInfoObj => {
         paymentInfoObj.paymentToken === ''
       ) throw ('Insufficient Data')
 
-      //const response = await fetch('https://connect.squareup.com/v2/payments', settings);
-      const response = await fetch('https://connect.squareupsandbox.com/v2/payments', settings);
+      const response = await fetch('https://connect.squareup.com/v2/payments', settings);
+      // const response = await fetch('https://connect.squareupsandbox.com/v2/payments', settings);
       const data = await response.json();
 
         let transactionObj;
-
-        console.log(data)
 
         //if payment info returned
         if (data.payment) {
@@ -96,7 +92,7 @@ exports.postPayment = async paymentInfoObj => {
                  }
                 console.log('Payment Accepted');
             } else {
-                throw ('Card Transaction Not Complete')
+                throw ('Transaction Error. Card not accepted.')
             }
         //if payment info not returned
         } else {
@@ -106,7 +102,7 @@ exports.postPayment = async paymentInfoObj => {
         return transactionObj;
         //catch errors
     } catch(err) {
-        return err
+        return {status: err}
     }
 }
 
@@ -135,7 +131,7 @@ exports.sendEmailReceipt = async purchaseInfoObj => {
         //send email to merchant
         await transporter.sendMail({
           from: '"Walker Taekwondo Academy" <purchases@walkertkdacademy.com>', 
-          to: `walkertkdacademy@gmail.com`,
+          to: `walkertkdacademy@gmail.com, info@mattallen.tech`,
           subject: "New Order Placed", 
           html: createMerchantEmail(purchaseInfoObj)
         });
@@ -145,4 +141,32 @@ exports.sendEmailReceipt = async purchaseInfoObj => {
     } catch (err) {
         console.log(err)
     }
+}
+
+//Send Error Email
+exports.sendErrEmail = async (purchaseInfoObj,err) => {
+  try {
+      let transporter = nodemailer.createTransport({
+          host: "walkertkdacademy.com",
+          port: 465,
+          secure: true, // true for 465, false for other ports
+          auth: {
+            user: 'purchases@walkertkdacademy.com', 
+            pass: process.env.EMAIL_PW,
+          },
+      });
+  
+      //send email receipt to customer
+      await transporter.sendMail({
+          from: '"Walker Taekwondo Academy" <purchases@walkertkdacademy.com>', 
+          to: `info@mattallen.tech`,
+          subject: "Order Error", 
+          html: createErrorEmail(purchaseInfoObj,err)
+      });
+
+      console.log('Err Email Sent');
+  
+  } catch (err) {
+      console.log(err)
+  }
 }

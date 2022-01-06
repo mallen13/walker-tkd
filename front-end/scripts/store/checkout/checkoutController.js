@@ -29,18 +29,18 @@ export const postData = async (PurchaseDetails) => {
     const status = async () => {
         try {
             const response = await fetch('https://walkertkdacademy.com/create-payment', settings);
-            //const response = await fetch('http://localhost:8675/create-payment', settings);
+            // const response = await fetch('http://localhost:8675/create-payment', settings);
             const data = await response.json();
-            console.log(data)
+
             if (response.status === 200) {
-                console.log(data.status)
-                return data;
+                return 'Success';
             } else {
                 throw data.status;
             }
         } catch(err) {
             console.log('Error: ' + err)
-            return 'Payment Failed';
+            if (err === 'Transaction Error. Card not accepted.') return 'Card Not Accepted';
+            else return 'Server Error' ;
         }
     }
 
@@ -61,7 +61,7 @@ export const collectCheckoutInputs = () => {
 }
 
 //show processing screen 
-export const displayPayProcessingScreen = (status) => {
+export const displayPayProcessingScreen = (status, postResponse = '') => {
     const overlay = document.getElementById('payStatusOverlay');
     overlay.style.display = 'flex';
 
@@ -85,10 +85,12 @@ export const displayPayProcessingScreen = (status) => {
     if (status === 'success') {
         showSuccessMsg.style.display = 'block';
         exitBtn.style.display = 'block';
-    } else if (status === 'error') {
-        showErrorMsg.style.display = 'block';
-        exitBtn.style.display = 'block';
     } else if (status === 'pending') {
         paymentProcessingMsg.style.display = 'block';
-    };
+    } else {
+        if (postResponse = 'Card Not Accepted') showErrorMsg.innerHTML='Transaction failed. Card did not go through.';
+        else if (postResponse = 'Card Not Accepted') showErrorMsg.innerHTML='Server Error. Please try again later.';
+        showErrorMsg.style.display = 'block';
+        exitBtn.style.display = 'block';
+    } 
 }

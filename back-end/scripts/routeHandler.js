@@ -1,4 +1,4 @@
-const { postPayment, sendEmailReceipt, setDate} = require('./controller.js');
+const { postPayment, sendEmailReceipt, setDate, sendErrEmail} = require('./controller.js');
 
 // Give Square credentials to front-end
 exports.giveCredentials = async (req,res) => {
@@ -25,7 +25,9 @@ exports.createPayment = async (req,res) => {
       await sendEmailReceipt(purchaseInfoObj);
       console.log(payment.status);
     } else {
-      res.status(400).send({status: 'Unable To Process Payment.'});
+      console.log(payment.status)
+      res.status(400).send({status: payment.status});
+      //await sendErrEmail(purchaseInfoObj, payment.status)
     }
 }
 

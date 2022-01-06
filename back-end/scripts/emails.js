@@ -48,7 +48,7 @@ exports.createCustomerEmail = purchaseInfoObj => {
 }
 
 // create merchange email
-exports.createMerchantEmail = purchaseInfoObj => {
+exports.createMerchantEmail = (purchaseInfoObj, err) => {
   //get each item from order
   const getItems = () => {
     let returnString = '';
@@ -85,3 +85,42 @@ exports.createMerchantEmail = purchaseInfoObj => {
     </div>
   `
 }
+
+// create merchange email
+exports.createErrorEmail = (purchaseInfoObj,err) => {
+  //get each item from order
+  const getItems = () => {
+    let returnString = '';
+    //get item name/ price
+    purchaseInfoObj.items.forEach( item => {
+      returnString +=`1 ${item.name} ($${item.price})<br />`
+      //for each input, add name and value
+      item.inputs.forEach( input => {
+        returnString += `<span style="margin-left:2rem;">&#9702; ${Object.keys(input)}: ${Object.values(input)}</span><br />`
+      })
+    })
+    //return html string
+    return returnString;
+  }
+  //merchant email
+  return `<div style="font-size:1.1rem;color:black">
+      <p>Error: ${err}</p>
+
+      <p> 
+        <span style="text-decoration:underline; font-weight:bold">Billing Information:</span> <br />
+        Date: ${purchaseInfoObj.transactionDate}  <br />
+        First Name: ${purchaseInfoObj.billingInfo.firstName}  <br />
+        Last Name: ${purchaseInfoObj.billingInfo.lastName}  <br />
+        Email Address: ${purchaseInfoObj.billingInfo.email}  <br />
+        Amount Billed: $${purchaseInfoObj.total}  <br />
+        Payment: Card  <br />
+      </p>
+
+      <p>
+        <span style="text-decoration:underline; font-weight:bold">Order Details:</span> <br />
+        ${getItems()}
+  
+    </div>
+  `
+}
+

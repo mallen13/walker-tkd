@@ -22,8 +22,9 @@ const handleCheckout = (card,PurchaseDetails) => {
             PurchaseDetails.paymentToken = await generatePaymentToken(card);
 
             //if no payment token or failed to post, post error. Else post success
-            !PurchaseDetails.paymentToken || await postData(PurchaseDetails) === 'Payment Failed'
-                ?  displayPayProcessingScreen('error')
+            const postResponse = await postData(PurchaseDetails)
+            !PurchaseDetails.paymentToken || postResponse !== 'Success'
+                ?  displayPayProcessingScreen('error',postResponse)
                 :  displayPayProcessingScreen('success')
         } else {
             alert('History has been cleared . Please try again.');

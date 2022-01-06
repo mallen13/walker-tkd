@@ -4,7 +4,7 @@ const { createPayment,giveCredentials } = require('./scripts/routeHandler.js');
 const cors = require('cors');
 const rateLimit = require("express-rate-limit");
 const app = express();
-// require('dotenv').config();
+require('dotenv').config();
 const port = 8675;
 
 //setup rate limiter
