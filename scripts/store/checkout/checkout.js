@@ -22,7 +22,7 @@ const handleCheckout = (card,PurchaseDetails) => {
             PurchaseDetails.paymentToken = await generatePaymentToken(card);
 
             //if no payment token or failed to post, post error. Else post success
-            const postResponse = await postData(PurchaseDetails)
+            const postResponse = await postData(PurchaseDetails);
             !PurchaseDetails.paymentToken || postResponse !== 'Success'
                 ?  displayPayProcessingScreen('error',postResponse)
                 :  displayPayProcessingScreen('success')
