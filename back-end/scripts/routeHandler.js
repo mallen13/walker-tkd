@@ -27,7 +27,7 @@ exports.createPayment = async (req,res) => {
     } else {
       console.log(payment.status)
       res.status(400).send({status: payment.status});
-      //await sendErrEmail(purchaseInfoObj, payment.status)
+      await sendErrEmail(purchaseInfoObj, payment.status)
     }
 }
 

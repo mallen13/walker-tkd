@@ -5,8 +5,8 @@ export const generatePaymentToken = async card => {
     if (result.status === 'OK') {
         return result.token;
     }
-    } catch (e) {
-        console.error('error: ' + e);
+    } catch (err) {
+        console.error('Payment Token: ' + err);
         return null;
     }
 }
@@ -38,9 +38,9 @@ export const postData = async (PurchaseDetails) => {
                 throw data.status;
             }
         } catch(err) {
-            console.log('Error: ' + err)
+            console.error('Post Payment: ' + err)
             if (err === 'Transaction Error. Card not accepted.') return 'Card Not Accepted';
-            else return 'Server Error' ;
+            return 'Server Error' ;
         }
     }
 
@@ -88,8 +88,8 @@ export const displayPayProcessingScreen = (status, postResponse = '') => {
     } else if (status === 'pending') {
         paymentProcessingMsg.style.display = 'block';
     } else {
-        if (postResponse = 'Card Not Accepted') showErrorMsg.innerHTML='Transaction failed. Card did not go through.';
-        else if (postResponse = 'Card Not Accepted') showErrorMsg.innerHTML='Server Error. Please try again later.';
+        if (postResponse === 'Card Not Accepted') showErrorMsg.innerHTML='Transaction failed. Card did not go through.';
+        else if (postResponse === 'Server Error') showErrorMsg.innerHTML='System error. Please try again later.';
         showErrorMsg.style.display = 'block';
         exitBtn.style.display = 'block';
     } 
