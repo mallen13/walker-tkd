@@ -102,10 +102,10 @@ export const ItemsList = [
     },
     {
       name: 'Donation',
-      description: 'Donate to the school or sponsor a specific student or event. Minimum of $5.',
+      description: 'Donate to the school or sponsor a specific student or event. Minimum of $15.',
       price: '',
       selectInputs: [],
       textInputs: ['Memo'],
-      numberInputs: ['Dollar Amount (Ex: 5 = $5, 50 = $50) ']
+      numberInputs: ['Donation Amount']
     }
   ]

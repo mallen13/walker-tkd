@@ -155,6 +155,7 @@ input:focus, input:hover, input:active, select:focus, select:hover, select:activ
 /*Header*/
 header {
   display: flex;
+  z-index: 1;
   flex-direction: row;
   justify-content: space-between;
   position: sticky;
