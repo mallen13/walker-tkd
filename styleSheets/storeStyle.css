@@ -16,6 +16,22 @@
 }
 
 /* store iems */
+.dollarInput {
+    position: relative;
+    text-align: left;
+}
+
+.dollarInput input {
+    padding-left: 15px;
+}
+
+.dollarInput:after {
+    position: absolute;
+    content: '$';
+    top: 49px;
+    left: 5px;
+}
+
 #storeItems {
     display: flex;
     flex-wrap: wrap;
