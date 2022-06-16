@@ -3,11 +3,11 @@
 ## About
 This website is a client project built for a non-profit martial arts school. The project started off as a static website containing a home page, information about the organization, it's contact information, an image gallery, and a e-commerce application.
 
-A e-commerce application was added using vanilla JS. (See https://walkertkdacademy.com/store.html). The application dynmically generates store items based off a list of iems. Users can add items to cart and checkout with their card information. Information is also saved in local storage. Upon checkout, the user recieves a receipt email, as well as the merchant.
+A e-commerce application was added using vanilla JS. (See https://walkertkdacademy.com/store.html](https://mallen13.github.io/walker-tkd). The application dynmically generates store items based off a list of iems. Users can add items to cart and checkout with their card information. Information is also saved in local storage. Upon checkout, the user recieves a receipt email, as well as the merchant.
 
 Vanilla JS was intentionally used instead of a library/ framework to solidy essential principles and as a reminder of why libraries/frameworks are beneficial.
 
-https://walkertkdacademy.com/store.html
+https://mallen13.github.io/walker-tkd/store.html
 
 ## Technologies
 
